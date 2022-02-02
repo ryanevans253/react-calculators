@@ -2,7 +2,14 @@ import "chart.js/auto";
 //nothing
 import { Doughnut } from "react-chartjs-2";
 
-export default function FlipChart() {
+export default function FlipChart(props) {
+  function calculate() {
+    console.log(props.commission);
+  }
+
+  const comm = props.commission;
+  // console.log(comm);
+
   const options = {
     responsive: true,
     plugins: {
@@ -28,7 +35,7 @@ export default function FlipChart() {
 
     datasets: [
       {
-        data: [12, 15, 30, 16, 20],
+        data: [comm, 2, 3, 4, 5],
         backgroundColor: [
           "rgba(97,245,245)",
           "rgba(98,195,245)",
@@ -42,7 +49,6 @@ export default function FlipChart() {
 
   return (
     <div>
-      <h1>Donut chart</h1>
       <Doughnut data={data} options={options} />
     </div>
   );
