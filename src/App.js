@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ReactDOM from "react-dom";
+
+import PersistentDrawerRight from "./components/drawerNav/Navigation.js";
+import InputAdornments from "./components/inputbox/InputBox.js";
+import { Grid } from "@mui/material";
+import Item from "@mui/material";
+import { Container } from "@mui/material";
+import FlipChart from "./components/flipChart/FlipChart";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PersistentDrawerRight />
+      <Container maxWidth="lg">
+        <Grid container spacing={2} columns={16}>
+          <Grid item xs={8}>
+            {/* <Item>xs=8</Item> */}
+            <InputAdornments />
+          </Grid>
+          <Grid item xs={8}>
+            <Container maxWidth="sm">
+              {/* <Item>xs=8</Item> */}
+              <FlipChart />
+            </Container>
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }
