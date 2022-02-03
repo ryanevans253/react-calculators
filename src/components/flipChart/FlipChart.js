@@ -3,12 +3,11 @@ import "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 
 export default function FlipChart(props) {
-  function calculate() {
-    console.log(props.commission);
-  }
-
-  const comm = props.commission;
-  // console.log(comm);
+  let comm = (props.commission / 100) * props.arv;
+  let repair = props.repair;
+  let holding = props.holdingCost * props.holdingTime;
+  let pClosing = props.purchaseClosingCosts;
+  let sClosing = props.salesClosingCosts;
 
   const options = {
     responsive: true,
@@ -24,18 +23,18 @@ export default function FlipChart(props) {
     },
   };
 
-  const data = {
+  let data = {
     labels: [
+      "Sales Commission",
+      "Holding Cost",
       "Purchase Closing Costs",
       "Sale Closing Costs",
       "Repair Costs",
-      "Sales Commission",
-      "Holding Cost",
     ],
 
     datasets: [
       {
-        data: [comm, 2, 3, 4, 5],
+        data: [comm, holding, pClosing, sClosing, props.repair],
         backgroundColor: [
           "rgba(97,245,245)",
           "rgba(98,195,245)",
@@ -49,7 +48,7 @@ export default function FlipChart(props) {
 
   return (
     <div>
-      <Doughnut data={data} options={options} />
+      <Doughnut data={data} options={options} style={{ maxHeight: 400 }} />
     </div>
   );
 }
