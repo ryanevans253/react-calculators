@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import { shadows } from "@mui/system";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
+import FlipResultsInner from "../flipResultsInner/FlipResultsInner";
 
 export default function Results(props) {
   let totalACQ = props.pp + props.purchaseClosingCosts;
@@ -50,10 +51,12 @@ export default function Results(props) {
           pt: 2,
         }}
       >
-        <TextBox profit={totalProfit} name="poop" />
-        {/* 
-        <Typography variant="h3">${totalProfit}</Typography>
-        <Typography variant="subtitle1">{props.name}</Typography> */}
+        {/* <TextBox profit={totalProfit} name="poop" /> */}
+
+        <Typography variant="h3" sx={{ fontWeight: "bold" }}>
+          ${totalProfit}
+        </Typography>
+        <Typography variant="subtitle1">{props.name}</Typography>
       </Box>
     </div>
   );

@@ -13,6 +13,7 @@ import { Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Results from "./components/flipResults/FlipResults";
 import { PausePresentationTwoTone } from "@mui/icons-material";
+import FlipResultsInner from "./components/flipResultsInner/FlipResultsInner";
 
 function App() {
   const [purchasePrice, setPurchasePrice] = useState(325000);
@@ -86,7 +87,9 @@ function App() {
                 desired={parseInt(profit)}
                 name="Estimated Profit"
                 equation="totalProfit"
-              />
+              >
+                <FlipResultsInner />
+              </Results>
             </Grid>
             <Grid item xs={12} sm={7} md={4}>
               <Results
