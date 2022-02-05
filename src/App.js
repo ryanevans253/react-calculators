@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import PersistentDrawerRight from "./components/drawerNav/Navigation.js";
@@ -26,8 +26,8 @@ function App() {
   const [holdingTime, setHoldingTime] = useState(9);
   const [holdingCost, setHoldingCost] = useState(350);
 
-  //checking
-  // console.log(typeof purchasePrice);
+  useEffect(() => console.log(repair + holdingTime * holdingCost));
+  //implementuseeffect hook. do the calculation here and then have it updated and passed down as props so the calcs are all done.
 
   return (
     <div className="App">
