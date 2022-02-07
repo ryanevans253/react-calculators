@@ -7,35 +7,6 @@ import { Typography } from "@mui/material";
 import FlipResultsInner from "../flipResultsInner/FlipResultsInner";
 
 export default function Results(props) {
-  let totalACQ = props.pp + props.purchaseClosingCosts;
-  let totalHolding = props.holdingCost * props.holdingTime;
-
-  let totalProfit =
-    props.arv -
-    totalACQ -
-    props.salesClosingCosts -
-    props.repair -
-    totalHolding -
-    props.arv * (props.commission / 100);
-
-  let maxOffer =
-    props.arv -
-    props.purchaseClosingCosts -
-    props.repair -
-    totalHolding -
-    props.salesClosingCosts -
-    props.arv * (props.commission / 100) -
-    props.desired;
-
-  function TextBox(props) {
-    return (
-      <div>
-        <Typography variant="h3">${props.profit}</Typography>
-        <Typography variant="subtitle1">{props.name}</Typography>
-      </div>
-    );
-  }
-
   return (
     <div>
       <Box
@@ -51,10 +22,8 @@ export default function Results(props) {
           pt: 2,
         }}
       >
-        {/* <TextBox profit={totalProfit} name="poop" /> */}
-
         <Typography variant="h3" sx={{ fontWeight: "bold" }}>
-          ${totalProfit}
+          ${props.header.toLocaleString()}
         </Typography>
         <Typography variant="subtitle1">{props.name}</Typography>
       </Box>

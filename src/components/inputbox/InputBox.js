@@ -29,7 +29,10 @@ export default function InputArea(props) {
     props.onCommissionChange(e.target.value);
   const handleARVChange = (e) => props.onARVChange(e.target.value);
   const handleProfitChange = (e) => props.onProfitChange(e.target.value);
+
+  ////test
   const handleRepairChange = (e) => props.onRepairChange(e.target.value);
+  ///// testing
   const handleHoldingTimeChange = (e) =>
     props.onHoldingTimeChange(e.target.value);
   const handleHoldingCostChange = (e) =>

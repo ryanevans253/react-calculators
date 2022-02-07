@@ -26,8 +26,45 @@ function App() {
   const [holdingTime, setHoldingTime] = useState(9);
   const [holdingCost, setHoldingCost] = useState(350);
 
-  useEffect(() => console.log(repair + holdingTime * holdingCost));
-  //implementuseeffect hook. do the calculation here and then have it updated and passed down as props so the calcs are all done.
+  //props to pass down
+  const [prof, setProf] = useState(11);
+  const [maxOffer, setMaxOffer] = useState(22);
+  const [rehabAndExpenses, setRehabAndExpenses] = useState(33);
+
+  useEffect(() => {
+    setProf(
+      arv -
+        purchasePrice -
+        closingCosts -
+        salesClosing -
+        arv * (commissions / 100) -
+        repair -
+        holdingTime * holdingCost
+    );
+  });
+
+  useEffect(() => {
+    setMaxOffer(
+      arv -
+        closingCosts -
+        repair -
+        holdingTime * holdingCost -
+        salesClosing -
+        arv * (commissions / 100) -
+        profit
+    );
+  });
+
+  //potential type conversion bug here
+  useEffect(() => {
+    setRehabAndExpenses(
+      +closingCosts +
+        +salesClosing +
+        (+arv * +commissions) / 100 +
+        +repair +
+        +holdingCost * holdingTime
+    );
+  });
 
   return (
     <div className="App">
@@ -75,50 +112,15 @@ function App() {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={5}>
-              <Results
-                arv={parseInt(arv)}
-                pp={parseInt(purchasePrice)}
-                commission={parseInt(commissions)}
-                purchaseClosingCosts={parseInt(closingCosts)}
-                salesClosingCosts={parseInt(salesClosing)}
-                holdingCost={parseInt(holdingCost)}
-                holdingTime={parseInt(holdingTime)}
-                repair={parseInt(repair)}
-                desired={parseInt(profit)}
-                name="Estimated Profit"
-                equation="totalProfit"
-              >
+              <Results name="Estimated Profit" header={prof}>
                 <FlipResultsInner />
               </Results>
             </Grid>
             <Grid item xs={12} sm={7} md={4}>
-              <Results
-                arv={parseInt(arv)}
-                pp={parseInt(purchasePrice)}
-                commission={parseInt(commissions)}
-                purchaseClosingCosts={parseInt(closingCosts)}
-                salesClosingCosts={parseInt(salesClosing)}
-                holdingCost={parseInt(holdingCost)}
-                holdingTime={parseInt(holdingTime)}
-                repair={parseInt(repair)}
-                desired={parseInt(profit)}
-                name="Max Offer Price"
-                equation="maxOffer"
-              />
+              <Results name={"Maximum Offer"} header={maxOffer} />
             </Grid>
             <Grid item xs={12} sm={5} md={3}>
-              <Results
-                arv={parseInt(arv)}
-                pp={parseInt(purchasePrice)}
-                commission={parseInt(commissions)}
-                purchaseClosingCosts={parseInt(closingCosts)}
-                salesClosingCosts={parseInt(salesClosing)}
-                holdingCost={parseInt(holdingCost)}
-                holdingTime={parseInt(holdingTime)}
-                repair={parseInt(repair)}
-                desired={parseInt(profit)}
-                name="Rehab and Expenses"
-              />
+              <Results name="Rehab and Expenses" header={rehabAndExpenses} />
             </Grid>
           </Grid>
         </Container>
