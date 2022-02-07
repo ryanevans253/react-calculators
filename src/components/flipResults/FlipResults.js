@@ -1,10 +1,6 @@
-import { Divider } from "@mui/material";
-import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import { shadows } from "@mui/system";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
-import FlipResultsInner from "../flipResultsInner/FlipResultsInner";
 
 export default function Results(props) {
   return (

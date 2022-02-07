@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-
 import PersistentDrawerRight from "./components/drawerNav/Navigation.js";
 import InputArea from "./components/inputbox/InputBox.js";
 import { Grid } from "@mui/material";
-import Item from "@mui/material";
 import { Container } from "@mui/material";
 import FlipChart from "./components/flipChart/FlipChart";
-import { Button } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
 import { Typography } from "@mui/material";
-import Paper from "@mui/material/Paper";
 import Results from "./components/flipResults/FlipResults";
-import { PausePresentationTwoTone } from "@mui/icons-material";
-import FlipResultsInner from "./components/flipResultsInner/FlipResultsInner";
 
 function App() {
   const [purchasePrice, setPurchasePrice] = useState(325000);
@@ -27,7 +19,7 @@ function App() {
   const [holdingCost, setHoldingCost] = useState(350);
 
   //props to pass down
-  const [prof, setProf] = useState(11);
+  const [estProfit, setProf] = useState(11);
   const [maxOffer, setMaxOffer] = useState(22);
   const [rehabAndExpenses, setRehabAndExpenses] = useState(33);
 
@@ -112,9 +104,7 @@ function App() {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={5}>
-              <Results name="Estimated Profit" header={prof}>
-                <FlipResultsInner />
-              </Results>
+              <Results name="Estimated Profit" header={estProfit}></Results>
             </Grid>
             <Grid item xs={12} sm={7} md={4}>
               <Results name={"Maximum Offer"} header={maxOffer} />

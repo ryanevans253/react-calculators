@@ -1,38 +1,20 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import { Container } from "@mui/material";
 import { Grid } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
-import FilledInput from "@mui/material/FilledInput";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
 import { Typography } from "@mui/material";
-import { Button } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
-import { useState } from "react";
 
 export default function InputArea(props) {
   const handlePurchaseChange = (e) => props.onPurchaseChange(e.target.value);
   const handleClosingChange = (e) => props.onClosingChange(e.target.value);
   const handleSaleClosingChange = (e) =>
     props.onSaleClosingChange(e.target.value);
-
   const handleCommissionChange = (e) =>
     props.onCommissionChange(e.target.value);
   const handleARVChange = (e) => props.onARVChange(e.target.value);
   const handleProfitChange = (e) => props.onProfitChange(e.target.value);
-
-  ////test
   const handleRepairChange = (e) => props.onRepairChange(e.target.value);
-  ///// testing
   const handleHoldingTimeChange = (e) =>
     props.onHoldingTimeChange(e.target.value);
   const handleHoldingCostChange = (e) =>

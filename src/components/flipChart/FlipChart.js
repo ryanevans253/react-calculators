@@ -34,7 +34,7 @@ export default function FlipChart(props) {
 
     datasets: [
       {
-        data: [comm, holding, pClosing, sClosing, props.repair],
+        data: [comm, holding, pClosing, sClosing, repair],
         backgroundColor: [
           "rgba(97,245,245)",
           "rgba(98,195,245)",
