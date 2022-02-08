@@ -83,7 +83,7 @@ export default function PersistentDrawerRight() {
       <AppBar
         position="fixed"
         open={open}
-        sx={{ backgroundColor: "rgba(98,96,244)" }}
+        sx={{ backgroundColor: "rgba(97,147,245)" }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
