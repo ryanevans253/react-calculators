@@ -33,7 +33,16 @@ function App() {
         repair -
         holdingTime * holdingCost
     );
-  });
+  }, [
+    arv,
+    purchasePrice,
+    closingCosts,
+    salesClosing,
+    commissions,
+    repair,
+    holdingTime,
+    holdingCost,
+  ]);
 
   useEffect(() => {
     setMaxOffer(
@@ -45,7 +54,16 @@ function App() {
         arv * (commissions / 100) -
         profit
     );
-  });
+  }, [
+    arv,
+    closingCosts,
+    repair,
+    holdingTime,
+    holdingCost,
+    salesClosing,
+    commissions,
+    profit,
+  ]);
 
   //potential type conversion bug here
   useEffect(() => {
@@ -56,7 +74,15 @@ function App() {
         +repair +
         +holdingCost * holdingTime
     );
-  });
+  }, [
+    closingCosts,
+    salesClosing,
+    arv,
+    commissions,
+    repair,
+    holdingCost,
+    holdingTime,
+  ]);
 
   return (
     <div className="App">
