@@ -26,7 +26,7 @@ export default function FlipChart(props) {
   let data = {
     labels: [
       "Sales Commission",
-      "Holding Cost",
+      "Holding Costs",
       "Purchase Closing Costs",
       "Sale Closing Costs",
       "Repair Costs",
@@ -36,11 +36,11 @@ export default function FlipChart(props) {
       {
         data: [comm, holding, pClosing, sClosing, repair],
         backgroundColor: [
-          "rgba(97,245,245)",
-          "rgba(98,195,245)",
-          "rgba(97,147,245)",
-          "rgba(98,96,244)",
-          "rgba(99,49,245)",
+          "#056CF2",
+          "#448FF2",
+          "#F2F2F2",
+          "#F2B807",
+          "#F2A007",
         ],
       },
     ],
@@ -52,3 +52,12 @@ export default function FlipChart(props) {
     </div>
   );
 }
+
+//blues and purples
+// "rgba(97,245,245)",
+// "rgba(98,195,245)",
+// "rgba(97,147,245)",
+// "rgba(98,96,244)",
+// "rgba(99,49,245)",
+
+//
