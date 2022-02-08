@@ -24,7 +24,12 @@ export default function InputArea(props) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h5" gutterBottom component="div" sx={{ mx: 1 }}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            component="div"
+            sx={{ mx: 1, color: "#448FF2" }}
+          >
             Acquisition Costs
           </Typography>
         </Grid>
@@ -57,7 +62,12 @@ export default function InputArea(props) {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h5" gutterBottom component="div" sx={{ mx: 1 }}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            component="div"
+            sx={{ mx: 1, color: "#448FF2" }}
+          >
             Disposition Costs
           </Typography>
         </Grid>
@@ -91,7 +101,12 @@ export default function InputArea(props) {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h5" gutterBottom component="div" sx={{ mx: 1 }}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            component="div"
+            sx={{ mx: 1, color: "#448FF2" }}
+          >
             Estimates
           </Typography>
         </Grid>
@@ -124,7 +139,12 @@ export default function InputArea(props) {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h5" gutterBottom component="div" sx={{ mx: 1 }}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            component="div"
+            sx={{ mx: 1, color: "#448FF2" }}
+          >
             Renovation Costs
           </Typography>
         </Grid>

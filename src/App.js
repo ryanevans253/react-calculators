@@ -109,7 +109,7 @@ function App() {
                 variant="h5"
                 gutterBottom
                 component="div"
-                sx={{ mx: 1 }}
+                sx={{ mx: 1, color: "#448FF2" }}
               >
                 Expense Breakdown
               </Typography>
