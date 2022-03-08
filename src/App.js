@@ -86,7 +86,7 @@ function App() {
 
   return (
     <div className="App">
-      <PersistentDrawerRight />
+      <PersistentDrawerRight title="Fix and Flip Calculator" />
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>

@@ -65,7 +65,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-start",
 }));
 
-export default function PersistentDrawerRight() {
+export default function PersistentDrawerRight(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -83,7 +83,7 @@ export default function PersistentDrawerRight() {
       <AppBar position="fixed" open={open} sx={{ backgroundColor: "#448FF2" }}>
         <Toolbar>
           <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-            Fix and Flip Calculator
+            {props.title}
           </Typography>
           <IconButton
             color="inherit"
