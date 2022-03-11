@@ -108,3 +108,5 @@ function Mortgage() {
 }
 
 export default Mortgage;
+
+//charts need fully redone
