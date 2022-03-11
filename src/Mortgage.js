@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PersistentDrawerRight from "./components/drawerNav/Navigation.js";
-import InputArea from "./components/inputbox/InputBox.js";
+import MortgageInput from "./components/mortgageInput/MortgageInput.js";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
 import FlipChart from "./components/flipChart/FlipChart";
@@ -49,22 +49,10 @@ function Mortgage() {
       <PersistentDrawerRight title="Mortgage Calculator" />
       <Container maxWidth="lg">
         <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <InputArea
-              // onPurchaseChange={setPurchasePrice}
-              // onClosingChange={setClosingCosts}
-              // onSaleClosingChange={setSalesClosing}
-              // onCommissionChange={setCommissions}
-              // onARVChange={setARV}
-              // onProfitChange={setProfit}
-              // onRepairChange={setRepair}
-              // onHoldingTimeChange={setHoldingTime}
-              // onHoldingCostChange={setHoldingCost}
-              //mortgage
-              onPurchasePriceChange={setPurchasePrice}
-            />
+          <Grid item xs={12} md={5}>
+            <MortgageInput />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={7}>
             <Container maxWidth="sm">
               <Typography
                 align="center"
