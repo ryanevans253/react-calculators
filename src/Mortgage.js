@@ -25,24 +25,7 @@ function Mortgage() {
     setMonthlyMortgage(+purchasePrice * (+interestRate / 100 + 1));
   }, []);
 
-  //potential type conversion bug here
-  // useEffect(() => {
-  //   setRehabAndExpenses(
-  //     +closingCosts +
-  //       +salesClosing +
-  //       (+arv * +commissions) / 100 +
-  //       +repair +
-  //       +holdingCost * holdingTime
-  //   );
-  // }, [
-  //   closingCosts,
-  //   salesClosing,
-  //   arv,
-  //   commissions,
-  //   repair,
-  //   holdingCost,
-  //   holdingTime,
-  // ]);
+  //advanced options
 
   return (
     <div className="App">
@@ -61,17 +44,8 @@ function Mortgage() {
                 component="div"
                 sx={{ mx: 1, color: "#448FF2" }}
               >
-                Expense Breakdown
+                Monthly Breakdown
               </Typography>
-              <FlipChart
-              // commission={commissions}
-              // arv={arv}
-              // purchaseClosingCosts={closingCosts}
-              // salesClosingCosts={salesClosing}
-              // holdingCost={holdingCost}
-              // holdingTime={holdingTime}
-              // repair={repair}
-              />
             </Container>
           </Grid>
         </Grid>
@@ -96,5 +70,3 @@ function Mortgage() {
 }
 
 export default Mortgage;
-
-//charts need fully redone

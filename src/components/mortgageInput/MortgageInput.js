@@ -3,17 +3,20 @@ import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 import { useState } from "react";
+import "./mortgageInput.css";
 
 export default function MortgageInput(props) {
   //handleChange functions here
-
-  const [advancedOptions, setAdvancedOptions] = useState(false);
 
   //   const showAdvancedOptions = () => {
   //     advancedOptions === "display: none"
   //       ? setAdvancedOptions("")
   //       : setAdvancedOptions("display: none");
   //   };
+
+  const [advancedOptions, setAdvancedOptions] = useState(false);
+
+  const handleAdvancedToggle = () => setAdvancedOptions(!advancedOptions);
 
   return (
     <div>
@@ -86,7 +89,7 @@ export default function MortgageInput(props) {
         </Grid>
         {/* /////////////////////////////////////////////////////////////////////////// extras */}
         <Typography
-          onClick={() => setAdvancedOptions((s) => !s)}
+          onClick={handleAdvancedToggle}
           variant="h6"
           gutterBottom
           component="div"
@@ -94,10 +97,9 @@ export default function MortgageInput(props) {
         >
           Show Advanced Options
         </Typography>
-        <div sx={{ display: "none" }}>
+        <div className={advancedOptions ? "hide" : ""}>
           <Grid item xs={12}>
             <TextField
-              sx={{ display: "block" }}
               fullWidth
               // onChange={handleClosingChange}
               defaultValue={1200}
@@ -112,7 +114,6 @@ export default function MortgageInput(props) {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              sx={{ display: "none" }}
               fullWidth
               // onChange={handleClosingChange}
               defaultValue={2500}
@@ -127,7 +128,6 @@ export default function MortgageInput(props) {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              sx={{ display: "none" }}
               fullWidth
               // onChange={handleClosingChange}
               defaultValue={50}
