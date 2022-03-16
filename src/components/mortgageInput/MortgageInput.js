@@ -9,9 +9,22 @@ export default function MortgageInput(props) {
   const [advancedOptions, setAdvancedOptions] = useState(true);
   const handleAdvancedToggle = () => setAdvancedOptions(!advancedOptions);
 
-  //from app
+  //for monthly principal and interest
   const handlePurchaseChange = (e) =>
     props.onPurchasePriceChange(parseInt(e.target.value));
+  const handleInterestChange = (e) =>
+    props.onInterestChange(parseInt(e.target.value));
+  const handleDownPaymentChange = (e) =>
+    props.onDownPaymentChange(parseInt(e.target.value));
+  const handleLoanLengthChange = (e) =>
+    props.onLoanLengthChange(parseInt(e.target.value));
+
+  //for advanced options
+  const handleTaxesChange = (e) =>
+    props.onTaxesChange(parseInt(e.target.value));
+  const handleInsuranceChange = (e) =>
+    props.onInsuranceChange(parseInt(e.target.value));
+  const handleHOAChange = (e) => props.onHoaChange(parseInt(e.target.value));
 
   return (
     <div>
@@ -43,7 +56,7 @@ export default function MortgageInput(props) {
         <Grid item xs={12}>
           <TextField
             fullWidth
-            // onChange={handleClosingChange}
+            onChange={handleDownPaymentChange}
             defaultValue={20}
             label="Down Payment"
             id="outlined-start-adornment"
@@ -57,7 +70,7 @@ export default function MortgageInput(props) {
         <Grid item xs={12}>
           <TextField
             fullWidth
-            // onChange={handleClosingChange}
+            onChange={handleLoanLengthChange}
             defaultValue={30}
             label="Length of Loan"
             id="outlined-start-adornment"
@@ -71,7 +84,7 @@ export default function MortgageInput(props) {
         <Grid item xs={12}>
           <TextField
             fullWidth
-            // onChange={handleClosingChange}
+            onChange={handleInterestChange}
             defaultValue={4.2}
             label="Interest Rate"
             id="outlined-start-adornment"
@@ -96,8 +109,8 @@ export default function MortgageInput(props) {
         <Grid className={advancedOptions ? "hide" : ""} item xs={12}>
           <TextField
             fullWidth
-            // onChange={handleClosingChange}
-            defaultValue={1200}
+            onChange={handleInsuranceChange}
+            defaultValue={1500}
             label="Homeowners Insurance"
             id="outlined-start-adornment"
             InputProps={{
@@ -110,7 +123,7 @@ export default function MortgageInput(props) {
         <Grid className={advancedOptions ? "hide" : ""} item xs={12}>
           <TextField
             fullWidth
-            // onChange={handleClosingChange}
+            onChange={handleTaxesChange}
             defaultValue={2500}
             label="Property Taxes"
             id="outlined-start-adornment"
@@ -124,8 +137,8 @@ export default function MortgageInput(props) {
         <Grid className={advancedOptions ? "hide" : ""} item xs={12}>
           <TextField
             fullWidth
-            // onChange={handleClosingChange}
-            defaultValue={50}
+            onChange={handleHOAChange}
+            defaultValue={0}
             label="Yearly HOA Fees"
             id="outlined-start-adornment"
             InputProps={{

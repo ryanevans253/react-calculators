@@ -18,13 +18,13 @@ export default function MortgageChart(props) {
   };
 
   let data = {
-    labels: ["Principal", "Interest", "Taxes", "Insurance", "HOA Fees"],
+    labels: ["Principal and Interest", "Taxes", "Insurance", "HOA Fees"],
 
     datasets: [
       {
         data: [
-          props.principal,
-          props.interest,
+          props.principalAndInterest,
+
           props.taxes,
           props.insurance,
           props.hoa,

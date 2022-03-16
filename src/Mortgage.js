@@ -9,42 +9,63 @@ import Results from "./components/flipResults/FlipResults";
 
 function Mortgage() {
   const [purchasePrice, setPurchasePrice] = useState(100000);
-  const [interestRate, setInterestRate] = useState(3.4);
+  const [interestRate, setInterestRate] = useState(4.46);
   const [downPayment, setDownPayment] = useState(20);
-  const [loanLength, setLoanLength] = useState(360);
+  const [loanLength, setLoanLength] = useState(30);
 
   //advanced
 
-  const [yearlyTaxes, setYearlyTaxes] = useState(5500);
-  const [yearlyInsurance, setYearlyInsurance] = useState(2200);
+  const [yearlyTaxes, setYearlyTaxes] = useState(2500);
+  const [yearlyInsurance, setYearlyInsurance] = useState(1500);
   const [yearlyHOA, setYearlyHOA] = useState(0);
 
-  ///necessary calculations
-  const [principalAmount, setPrincipal] = useState(80000);
-  const [interestAmount, setInterestAmount] = useState(0);
-
   //props to pass to chart
-  const [monthlyPrincipal, setMonthlyPrincipal] = useState(2000);
-  const [monthlyInterest, setMonthlyInterest] = useState(300);
+  const [monthlyPrincipalAndInterest, setMonthlyPrincipalAndInterest] =
+    useState(2000);
   const [monthlyTaxes, setMonthlyTaxes] = useState(400);
   const [monthlyInsurance, setMonthlyInsurance] = useState(60);
   const [monthlyHOAFees, setMonthlyHOAFees] = useState(300);
 
-  //useeffect to update state
+  //update monthly principal and interest
+  useEffect(() => {
+    let down = purchasePrice * (downPayment / 100);
+    let principal = purchasePrice - down;
+    let numberOfPayments = loanLength * 12;
+    let iRate = Number(interestRate / 12 / 100);
+
+    setMonthlyPrincipalAndInterest(
+      (principal * iRate * Math.pow(1 + iRate, numberOfPayments)) /
+        (Math.pow(1 + iRate, numberOfPayments) - 1)
+    );
+  }, [purchasePrice, downPayment, interestRate, loanLength]);
 
   useEffect(() => {
-    setMonthlyPrincipal(purchasePrice - downPayment);
-    console.log("principal: " + principalAmount);
-  }, [purchasePrice, downPayment]);
+    setMonthlyTaxes(yearlyTaxes / 12);
+  }, [yearlyTaxes]);
 
-  console.log(typeof purchasePrice, typeof downPayment);
+  useEffect(() => {
+    setMonthlyInsurance(yearlyInsurance / 12);
+  }, [yearlyInsurance]);
+
+  useEffect(() => {
+    setMonthlyHOAFees(yearlyHOA / 12);
+  }, [yearlyHOA]);
+
   return (
     <div className="App">
       <PersistentDrawerRight title="Mortgage Calculator" />
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item xs={12} md={5}>
-            <MortgageInput onPurchasePriceChange={setPurchasePrice} />
+            <MortgageInput
+              onPurchasePriceChange={setPurchasePrice}
+              onDownPaymentChange={setDownPayment}
+              onLoanLengthChange={setLoanLength}
+              onInterestChange={setInterestRate}
+              onTaxesChange={setYearlyTaxes}
+              onInsuranceChange={setYearlyInsurance}
+              onHoaChange={setYearlyHOA}
+            />
           </Grid>
           <Grid item xs={12} md={7}>
             <Container maxWidth="sm">
@@ -58,8 +79,7 @@ function Mortgage() {
                 Payment Breakdown
               </Typography>
               <MortgageChart
-                principal={monthlyPrincipal}
-                interest={monthlyInterest}
+                principalAndInterest={monthlyPrincipalAndInterest}
                 taxes={monthlyTaxes}
                 insurance={monthlyInsurance}
                 hoa={monthlyHOAFees}
