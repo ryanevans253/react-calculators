@@ -3,12 +3,6 @@ import "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 
 export default function MortgageChart(props) {
-  //   let pp = (props.commission / 100) * props.arv;
-  //   let repair = props.repair;
-  //   let holding = props.holdingCost * props.holdingTime;
-  //   let pClosing = props.purchaseClosingCosts;
-  //   let sClosing = props.salesClosingCosts;
-
   const options = {
     responsive: true,
     plugins: {
@@ -24,24 +18,24 @@ export default function MortgageChart(props) {
   };
 
   let data = {
-    labels: [
-      "Sales Commission",
-      "Holding Costs",
-      "Purchase Closing Costs",
-      "Sale Closing Costs",
-      "Repair Costs",
-    ],
+    labels: ["Principal", "Interest", "Taxes", "Insurance", "HOA Fees"],
 
     datasets: [
       {
-        // data: [comm, holding, pClosing, sClosing, repair], //original from other chart
-        data: [1, 2, 3, 4, 5],
+        data: [
+          props.principal,
+          props.interest,
+          props.taxes,
+          props.insurance,
+          props.hoa,
+        ],
+        // data: [1, 2, 3, 4, 5],
         backgroundColor: [
-          "#056CF2",
-          "#448FF2",
-          "#F2F2F2",
-          "#F2B807",
-          "#F2A007",
+          "rgba(97,245,245)",
+          "rgba(98,195,245)",
+          "rgba(97,147,245)",
+          "rgba(98,96,244)",
+          "rgba(99,49,245)",
         ],
       },
     ],
@@ -62,3 +56,9 @@ export default function MortgageChart(props) {
 // "rgba(99,49,245)",
 
 //
+//blues and yellows
+// "#056CF2",
+//           "#448FF2",
+//           "#F2F2F2",
+//           "#F2B807",
+//           "#F2A007",

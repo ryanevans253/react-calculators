@@ -14,7 +14,7 @@ export default function MortgageInput(props) {
   //       : setAdvancedOptions("display: none");
   //   };
 
-  const [advancedOptions, setAdvancedOptions] = useState(false);
+  const [advancedOptions, setAdvancedOptions] = useState(true);
 
   const handleAdvancedToggle = () => setAdvancedOptions(!advancedOptions);
 
@@ -34,8 +34,8 @@ export default function MortgageInput(props) {
         <Grid item xs={12}>
           <TextField
             fullWidth
-            // onChange={handlePurchaseChange}
-            defaultValue={325000}
+            onChange={props.purchasePrice}
+            defaultValue={100000}
             label="Purchase Price"
             id="outlined-start-adornment"
             InputProps={{
@@ -49,12 +49,12 @@ export default function MortgageInput(props) {
           <TextField
             fullWidth
             // onChange={handleClosingChange}
-            defaultValue={5500}
-            label="Closing Costs"
+            defaultValue={20}
+            label="Down Payment"
             id="outlined-start-adornment"
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
+                <InputAdornment position="start">%</InputAdornment>
               ),
             }}
           />
@@ -89,6 +89,7 @@ export default function MortgageInput(props) {
         </Grid>
         {/* /////////////////////////////////////////////////////////////////////////// extras */}
         <Typography
+          className="advancedOptionsLink"
           onClick={handleAdvancedToggle}
           variant="h6"
           gutterBottom
@@ -97,50 +98,48 @@ export default function MortgageInput(props) {
         >
           Show Advanced Options
         </Typography>
-        <div className={advancedOptions ? "hide" : ""}>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              // onChange={handleClosingChange}
-              defaultValue={1200}
-              label="Homeowners Insurance"
-              id="outlined-start-adornment"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              // onChange={handleClosingChange}
-              defaultValue={2500}
-              label="Property Taxes"
-              id="outlined-start-adornment"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              // onChange={handleClosingChange}
-              defaultValue={50}
-              label="Yearly HOA Fees"
-              id="outlined-start-adornment"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-            />
-          </Grid>
-        </div>
+        <Grid className={advancedOptions ? "hide" : ""} item xs={12}>
+          <TextField
+            fullWidth
+            // onChange={handleClosingChange}
+            defaultValue={1200}
+            label="Homeowners Insurance"
+            id="outlined-start-adornment"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+          />
+        </Grid>
+        <Grid className={advancedOptions ? "hide" : ""} item xs={12}>
+          <TextField
+            fullWidth
+            // onChange={handleClosingChange}
+            defaultValue={2500}
+            label="Property Taxes"
+            id="outlined-start-adornment"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+          />
+        </Grid>
+        <Grid className={advancedOptions ? "hide" : ""} item xs={12}>
+          <TextField
+            fullWidth
+            // onChange={handleClosingChange}
+            defaultValue={50}
+            label="Yearly HOA Fees"
+            id="outlined-start-adornment"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+          />
+        </Grid>
       </Grid>
     </div>
   );

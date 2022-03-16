@@ -3,12 +3,12 @@ import PersistentDrawerRight from "./components/drawerNav/Navigation.js";
 import MortgageInput from "./components/mortgageInput/MortgageInput.js";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
-import FlipChart from "./components/flipChart/FlipChart";
+import MortgageChart from "./components/mortgageChart/MortgageChart.js";
 import { Typography } from "@mui/material";
 import Results from "./components/flipResults/FlipResults";
 
 function Mortgage() {
-  const [purchasePrice, setPurchasePrice] = useState(325000);
+  const [purchasePrice, setPurchasePrice] = useState(100000);
   const [interestRate, setInterestRate] = useState(3.4);
   const [downPayment, setDownPayment] = useState(20);
   const [loanLength, setLoanLength] = useState(360);
@@ -19,21 +19,33 @@ function Mortgage() {
   const [yearlyInsurance, setYearlyInsurance] = useState(2200);
   const [yearlyHOA, setYearlyHOA] = useState(0);
 
-  const [monthlyMortgage, setMonthlyMortgage] = useState(99);
+  ///necessary calculations
+  const [principalAmount, setPrincipal] = useState(80000);
+  const [interestAmount, setInterestAmount] = useState(0);
+
+  //props to pass to chart
+  const [monthlyPrincipal, setMonthlyPrincipal] = useState(2000);
+  const [monthlyInterest, setMonthlyInterest] = useState(300);
+  const [monthlyTaxes, setMonthlyTaxes] = useState(400);
+  const [monthlyInsurance, setMonthlyInsurance] = useState(60);
+  const [monthlyHOAFees, setMonthlyHOAFees] = useState(300);
+
+  //useeffect to update state
 
   useEffect(() => {
-    setMonthlyMortgage(+purchasePrice * (+interestRate / 100 + 1));
-  }, []);
+    setPrincipal(purchasePrice - downPayment);
+    console.log("principal: " + principalAmount);
+  }, [purchasePrice, downPayment]);
 
-  //advanced options
-
+  console.log(typeof purchasePrice, downPayment);
+  console.log(downPayment);
   return (
     <div className="App">
       <PersistentDrawerRight title="Mortgage Calculator" />
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item xs={12} md={5}>
-            <MortgageInput />
+            <MortgageInput purchasePrice={setPurchasePrice} />
           </Grid>
           <Grid item xs={12} md={7}>
             <Container maxWidth="sm">
@@ -44,8 +56,15 @@ function Mortgage() {
                 component="div"
                 sx={{ mx: 1, color: "#448FF2" }}
               >
-                Monthly Breakdown
+                Payment Breakdown
               </Typography>
+              <MortgageChart
+                principal={monthlyPrincipal}
+                interest={monthlyInterest}
+                taxes={monthlyTaxes}
+                insurance={monthlyInsurance}
+                hoa={monthlyHOAFees}
+              />
             </Container>
           </Grid>
         </Grid>
