@@ -6,17 +6,12 @@ import { useState } from "react";
 import "./mortgageInput.css";
 
 export default function MortgageInput(props) {
-  //handleChange functions here
-
-  //   const showAdvancedOptions = () => {
-  //     advancedOptions === "display: none"
-  //       ? setAdvancedOptions("")
-  //       : setAdvancedOptions("display: none");
-  //   };
-
   const [advancedOptions, setAdvancedOptions] = useState(true);
-
   const handleAdvancedToggle = () => setAdvancedOptions(!advancedOptions);
+
+  //from app
+  const handlePurchaseChange = (e) =>
+    props.onPurchasePriceChange(parseInt(e.target.value));
 
   return (
     <div>
@@ -34,7 +29,7 @@ export default function MortgageInput(props) {
         <Grid item xs={12}>
           <TextField
             fullWidth
-            onChange={props.purchasePrice}
+            onChange={handlePurchaseChange}
             defaultValue={100000}
             label="Purchase Price"
             id="outlined-start-adornment"

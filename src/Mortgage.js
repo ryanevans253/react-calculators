@@ -33,19 +33,18 @@ function Mortgage() {
   //useeffect to update state
 
   useEffect(() => {
-    setPrincipal(purchasePrice - downPayment);
+    setMonthlyPrincipal(purchasePrice - downPayment);
     console.log("principal: " + principalAmount);
   }, [purchasePrice, downPayment]);
 
-  console.log(typeof purchasePrice, downPayment);
-  console.log(downPayment);
+  console.log(typeof purchasePrice, typeof downPayment);
   return (
     <div className="App">
       <PersistentDrawerRight title="Mortgage Calculator" />
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item xs={12} md={5}>
-            <MortgageInput purchasePrice={setPurchasePrice} />
+            <MortgageInput onPurchasePriceChange={setPurchasePrice} />
           </Grid>
           <Grid item xs={12} md={7}>
             <Container maxWidth="sm">
