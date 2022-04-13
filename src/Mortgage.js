@@ -32,23 +32,23 @@ function Mortgage() {
     let principal = purchasePrice - down;
     let numberOfPayments = loanLength * 12;
     let iRate = Number(interestRate / 12 / 100);
-
-    setMonthlyPrincipalAndInterest(
+    let pAndI =
       (principal * iRate * Math.pow(1 + iRate, numberOfPayments)) /
-        (Math.pow(1 + iRate, numberOfPayments) - 1)
-    );
+      (Math.pow(1 + iRate, numberOfPayments) - 1);
+
+    setMonthlyPrincipalAndInterest(parseInt(pAndI));
   }, [purchasePrice, downPayment, interestRate, loanLength]);
 
   useEffect(() => {
-    setMonthlyTaxes(yearlyTaxes / 12);
+    setMonthlyTaxes(parseInt(yearlyTaxes / 12));
   }, [yearlyTaxes]);
 
   useEffect(() => {
-    setMonthlyInsurance(yearlyInsurance / 12);
+    setMonthlyInsurance(parseInt(yearlyInsurance / 12));
   }, [yearlyInsurance]);
 
   useEffect(() => {
-    setMonthlyHOAFees(yearlyHOA / 12);
+    setMonthlyHOAFees(parseInt(yearlyHOA / 12));
   }, [yearlyHOA]);
 
   return (
