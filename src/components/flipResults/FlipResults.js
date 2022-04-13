@@ -26,3 +26,5 @@ export default function Results(props) {
     </div>
   );
 }
+
+// backgroundColor: "#448FF2",

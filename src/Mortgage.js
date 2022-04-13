@@ -10,6 +10,8 @@ import Results from "./components/flipResults/FlipResults";
 function Mortgage() {
   const [purchasePrice, setPurchasePrice] = useState(100000);
   const [interestRate, setInterestRate] = useState(4.46);
+
+  //need to address a parsing issue with the decimal.
   const [downPayment, setDownPayment] = useState(20);
   const [loanLength, setLoanLength] = useState(30);
 
@@ -25,6 +27,7 @@ function Mortgage() {
   const [monthlyTaxes, setMonthlyTaxes] = useState(400);
   const [monthlyInsurance, setMonthlyInsurance] = useState(60);
   const [monthlyHOAFees, setMonthlyHOAFees] = useState(300);
+  const [totalMonthlyPayment, setTotalMonthlyPayment] = useState(0);
 
   //update monthly principal and interest
   useEffect(() => {
@@ -50,6 +53,22 @@ function Mortgage() {
   useEffect(() => {
     setMonthlyHOAFees(parseInt(yearlyHOA / 12));
   }, [yearlyHOA]);
+
+  useEffect(() => {
+    setTotalMonthlyPayment(
+      parseInt(
+        monthlyPrincipalAndInterest +
+          monthlyTaxes +
+          monthlyInsurance +
+          monthlyHOAFees
+      )
+    );
+  }, [
+    monthlyPrincipalAndInterest,
+    monthlyTaxes,
+    monthlyInsurance,
+    monthlyHOAFees,
+  ]);
 
   return (
     <div className="App">
@@ -91,15 +110,21 @@ function Mortgage() {
       <Container maxWidth="lg" sx={{ my: 5 }}>
         <Container>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={12} md={5}>
-              <Results name="Estimated Profit" header={55}></Results>
+            <Grid item xs={12} sm={12} md={12}>
+              <Results
+                name="Monthly Payment"
+                header={totalMonthlyPayment}
+              ></Results>
+            </Grid>
+            {/* <Grid item xs={12} sm={12} md={4}>
+              <Results name="Insurance" header={55}></Results>
             </Grid>
             <Grid item xs={12} sm={7} md={4}>
-              <Results name={"Maximum Offer"} header={35} />
+              <Results name={"Property Tax"} header={35} />
             </Grid>
-            <Grid item xs={12} sm={5} md={3}>
-              <Results name="Rehab and Expenses" header={15} />
-            </Grid>
+            <Grid item xs={12} sm={5} md={4}>
+              <Results name="HOA Fees" header={15} />
+            </Grid> */}
           </Grid>
         </Container>
       </Container>
